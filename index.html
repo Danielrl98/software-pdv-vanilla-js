@@ -29,8 +29,8 @@
                                 <tr>
                                     <th scope="row"></th>
                                     <th class="nomeproduto">Nome</th>
-                                    <th>Valor</th>
                                     <th>Estoque</th>
+                                    <th>Valor</th>
                                 </tr>
                             </thead>
                             <tbody id="tbody"></tbody>
@@ -40,8 +40,7 @@
             <div class="gridAbaixoPDV">
             <div class="atalhos">
                 <button onClick="BtnCadastrarProduto()">Cadastrar produto</button>
-                <button>Ver vendas</button>
-                <button>Desconto</button>
+                <button onClick="verVendas()">Ver vendas</button>
             </div>
             <div class="total">
                 <h1>Total: R$<span id="valortotal"> 0,00</span></h1>
@@ -70,6 +69,7 @@
                     <th>Forma de pagamento</th>
                     <th>Valor da venda</th>
                     <th>Data</th>
+                    <th><button class="deletar" onClick="verVendas()">X</button></th>
                 </tr>
             </thead>
             <tbody class="tbodyvendas"></tbody>
@@ -81,16 +81,16 @@
         <h1>Cadastrar Produto</h1>
         <form action="">
             <p><label for="">Nome</label></p>
-            <input id="inputnomeproduto" type="text">
+            <input id="inputnomeproduto" autocomplete="off" autocapitalize="off" required type="text">
             <div class="gridcampos">
             <p><label for="">Valor</label></p>
-            <input id="inputvalorproduto" type="number">
+            <input id="inputvalorproduto" required type="number">
             <p><label for="">Estoque</label></p>
-            <input id="inputestoqueproduto" type="number">
+            <input id="inputestoqueproduto" required type="number">
             </div>
             
             <p><button onClick="BtnCadastrarProduto()" id="botaovoltar">Voltar</button> <button id="buttonProduto" >Cadastrar</button></p>
-            <p id="mensagemproduto"></p>
+            <p id="mensagemproduto">Cadastrado com sucesso</p>
      </form>
     </div>
 </div>

@@ -4,7 +4,7 @@
     display: none;
 }
 .Cadastrodeprodutos{
-    background-color: white;
+    background-color: #f5f5f5;
     position: absolute;
     width: 60%;
     height: 510px;
@@ -43,5 +43,12 @@
     border: none;
     border-radius: 8px;
     cursor: pointer;
+}
+#mensagemproduto{
+    background-color: green;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
 }
 

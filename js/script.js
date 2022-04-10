@@ -13,12 +13,11 @@ const inputnomeproduto = document.querySelector("#inputnomeproduto")
 const inputvalorproduto = document.querySelector("#inputvalorproduto")
 const inputestoqueproduto = document.querySelector("#inputestoqueproduto")
 const buttonProduto = document.querySelector("#buttonProduto")
+const mensagemproduto = document.querySelector("#mensagemproduto")
+const gridvendas = document.querySelector(".gridvendas")
 //log
 
 const log = (value) => console.log(value)
-
-
-
 
 //armazenamentos dos produtos
 
@@ -31,19 +30,37 @@ buttonProduto.addEventListener('click',(e)=>{
 //Produtos
 
     const Produtos = {}
+
+    
     Produtos.nome=inputnomeproduto.value
-    Produtos.valor=inputvalorproduto.value
+    Produtos.valor= parseInt(inputvalorproduto.value)
     Produtos.estoque=inputestoqueproduto.value
 
-array.push(Produtos)
+ array.push(Produtos)
 
 log(array)
+
+inputnomeproduto.addEventListener('click',()=>{
+    mensagemproduto.style.display="none"
+})
+
+if(inputnomeproduto.value !== '' && inputvalorproduto.value !== '' && inputestoqueproduto.value !== ''){
+
+    mensagemproduto.style.display="block"
+
+    DataList()
+
+}else{
+
+    alert("preencha os campos")
+}
+
 
 inputnomeproduto.value = ''
 inputvalorproduto.value =''
 inputestoqueproduto.value = ''
 
-DataList()
+
 })
 
 //listar produtos
@@ -65,8 +82,9 @@ function juntarValor(value){
 function DataList(){
 
 var mapearnome = array.map(data=>data.nome)
-var mapearestoque = array.map(data=>data.estoque)
 var mapearvalor = array.map(data=>data.valor)
+var mapearestoque = array.map(data=>data.estoque)
+
 
     
 var criaroption = document.createElement("option")
@@ -175,7 +193,8 @@ function gerarMovimento(){
     c++
   
     var somavalor = valorarray.reduce((accumulator,valor)=>accumulator+valor,0)
-    total.innerHTML = somavalor 
+    log(somavalor)
+    total.innerHTML = somavalor
 
     var tabelavendas = `<tr><td>${c}</td>` + '<td>venda direta</td>' + `<td>${todasasvendas.formadepagamento=select.value}</td>`+ `<td> ${todasasvendas.valordavenda=somavalor}</td>` + `<td>${todasasvendas.data}</td></tr>`
 
@@ -197,8 +216,7 @@ function gerarMovimento(){
 
      }else{
         alert("Impossível finalizar com o valor de R$ " + somavalor +',00')
-
-        
+  
     }
     
 }
@@ -216,6 +234,19 @@ function BtnCadastrarProduto(){
             booleancadastro = true
         }
         
+}
+var booleanvendas = true
+function verVendas(){
+
+    if(booleanvendas  === true){
+
+        gridvendas.style.display="grid"
+         booleanvendas  = false
+
+     } else{
+        gridvendas.style.display="none"
+         booleanvendas = true
+     }
 }
 
 

@@ -15,12 +15,13 @@
     border-radius: 5px;
     display: flex;
     flex-direction: row;
+    overflow-y: scroll;
 
 }
 .vendas th{
     width: 150px;
 }
 .vendas td,th{
-    margin: 1em 2em;
+    /*margin: 1em 2em;*/
         
 }

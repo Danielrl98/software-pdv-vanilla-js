@@ -1,0 +1,30 @@
+#listprodutos{
+    background-color: white;
+    margin-left: 2em;
+    margin-right: 2em;
+    margin-top:3em;
+    text-align: left;
+    height: 260px;
+    overflow-y:scroll;
+    /*overflow-x:hidden;*/
+    border-radius: 7px;
+}
+#listprodutos table,thead,tbody{
+    width:100%;
+    margin: 1em 2em;
+}
+table tr td{
+    font-size: 17px;  
+}
+#listprodutos .nomeproduto{
+    width:250px
+}
+.tddeletar{
+    width:50px;
+}
+
+.deletar{
+    width: 15px;
+    background-color: red;
+    color:white
+}

@@ -1,0 +1,15 @@
+.vendas{
+    display: grid;
+    place-items: center;
+    margin-top:5em;
+    width:100%;
+    text-align: center;
+}
+.vendas th{
+    width: 150px;
+}
+.vendas td,th{
+    margin: 1em 2em;
+    
+    
+}

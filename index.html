@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDV</title>
+    <link rel="stylesheet" href="css/form.css">
+    <link rel="stylesheet" href="css/listprodutos.css">
+    <link rel="stylesheet" href="css/vendas.css">
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+           
+            <form action="">
+                <input list="datalist"type="text" id="inputproduto" placeholder="Pesquisar produto" autocomplete="off" autocapitalize="off">
+                <datalist id="datalist">
+                   <option></option>
+                </datalist>
+                <input type="submit" value="Adicionar" id="inputsubmit">
+            </form>
+            <div id="listprodutos">
+                    <ul>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th scope="row"></th>
+                                    <th class="nomeproduto">Nome</th>
+                                    <th>Valor</th>
+                                    <th>Estoque</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody">
+                                
+                            
+                            </tbody>
+                        </table>
+                    </ul>
+            </div>
+            <div class="total">
+                <h1>Total: R$<span id="valortotal"> 0,00</span></h1>
+            </div>
+            <div class="finalizar">
+                <form action="">
+                <select id="formadepagamento">
+                    <option value="dinheiro" selected>Dinheiro</option>
+                    <option value="Cartão crédito">Cartão crédito</option>
+                    <option value="Cartão Débito">Cartão Débito</option>
+                    <option value="Outro">Outro</option>
+                </select>
+                <button type="submit" id="finalizar" onClick="gerarMovimento()">Finalizar</button>
+                </form>
+                 </div>
+        </div>
+    </div>
+    <div class="vendas">
+        <table>
+            <thead>
+                <tr>
+                    <th>Id venda</th>
+                    <th>Tipo de venda</th>
+                    <th>Forma de pagamento</th>
+                    <th>Valor da venda</th>
+                    <th>Data</th>
+                </tr>
+            </thead>
+            <tbody class="tbodyvendas">
+              
+            
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script src="js/script.js"></script>
+</html>

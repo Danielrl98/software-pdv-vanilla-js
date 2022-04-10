@@ -6,7 +6,7 @@
     text-align: left;
     height: 260px;
     overflow-y:scroll;
-    /*overflow-x:hidden;*/
+    overflow-x:hidden;
     border-radius: 7px;
 }
 #listprodutos table,thead,tbody{

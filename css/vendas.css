@@ -1,15 +1,26 @@
-.vendas{
+.gridvendas{
     display: grid;
     place-items: center;
-    margin-top:5em;
-    width:100%;
-    text-align: center;
+    display: none;
+}
+
+.vendas{
+
+    background-color: white;
+    position: absolute;
+    width: 60%;
+    height: 510px;
+    box-shadow: 2px 2px 2px 2px rgba(59, 59, 59, 0.301);
+    top:10%;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+
 }
 .vendas th{
     width: 150px;
 }
 .vendas td,th{
     margin: 1em 2em;
-    
-    
+        
 }

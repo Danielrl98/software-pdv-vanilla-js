@@ -8,73 +8,43 @@ const total = document.querySelector("#valortotal")
 const inputsubmit = document.querySelector("#inputsubmit")
 const tbodyvendas = document.querySelector(".tbodyvendas")
 const select = document.querySelector("#formadepagamento")
-
+const CadastrarProduto = document.querySelector(".gridcadastro")
+const inputnomeproduto = document.querySelector("#inputnomeproduto")
+const inputvalorproduto = document.querySelector("#inputvalorproduto")
+const inputestoqueproduto = document.querySelector("#inputestoqueproduto")
+const buttonProduto = document.querySelector("#buttonProduto")
 //log
 
 const log = (value) => console.log(value)
 
+
+
+
+//armazenamentos dos produtos
+
+
+const array = []
+
+
+buttonProduto.addEventListener('click',(e)=>{
+   
 //Produtos
 
-const Produtos = {}
+    const Produtos = {}
+    Produtos.nome=inputnomeproduto.value
+    Produtos.valor=inputvalorproduto.value
+    Produtos.estoque=inputestoqueproduto.value
 
-Object.defineProperties(Produtos,{
+array.push(Produtos)
 
-    _nome:{
-        value:"tes28282852858251818185te",
-        configurable:true,
-        enumerable:true,
-        writable:true
-    },
-    _valor:{
-        value:12,
-        configurable:true,
-        enumerable:true,
-        writable:true
-    },
-    _estoque:{
-        value:16,
-        configurable:true,
-        enumerable:true,
-        writable:true
-    },
-    nome:{
-        get: function(){
-            return this._nome;
-        },
-        set: function(value){
-            this._nome = value
-        }
-    },
-    valor:{
-        get: function(){
-            return this._valor;
-        },
-        set: function(value){
-            this._valor = value
-        }
-    },
-    estoque:{
-        get: function(){
-            return this._estoque;
-        },
-        set: function(value){
-            this._estoque = value
-        }
-    },
-})
-//armazenamentos dos produtos
-var array = [Produtos]
+log(array)
 
-
-
-function ProdutoArmazenar(){
-
-datalist.innerHTML=''
- array.push(Produtos)
-//teste
+inputnomeproduto.value = ''
+inputvalorproduto.value =''
+inputestoqueproduto.value = ''
 
 DataList()
-}
+})
 
 //listar produtos
 
@@ -98,10 +68,10 @@ var mapearnome = array.map(data=>data.nome)
 var mapearestoque = array.map(data=>data.estoque)
 var mapearvalor = array.map(data=>data.valor)
 
-
-
+    
+var criaroption = document.createElement("option")
     for(i in mapearnome,mapearvalor,mapearestoque){
-        const criaroption = document.createElement("option")
+        
         
         datalist.append(criaroption)
         criaroption.value = mapearnome[i]
@@ -110,7 +80,7 @@ var mapearvalor = array.map(data=>data.valor)
     addEventListener('submit',(e)=>{
         
         e.preventDefault()
-        var pesquisarprodutoexistente = array.find(data=> data._nome === inputproduto.value)
+        var pesquisarprodutoexistente = array.find(data=> data.nome === inputproduto.value)
 
         
         
@@ -142,7 +112,7 @@ var mapearvalor = array.map(data=>data.valor)
     
     })
 }
-DataList()
+
 
 //deletar itens
 function removerItem(value){
@@ -200,8 +170,7 @@ function criarMovimento(){
     })
 
 }
-
-
+//vendas
 function gerarMovimento(){
     c++
   
@@ -233,9 +202,21 @@ function gerarMovimento(){
     }
     
 }
-
 criarMovimento()
+var booleancadastro = true
+function BtnCadastrarProduto(){
 
+        if(booleancadastro === true){
+
+           CadastrarProduto.style.display="grid"
+            booleancadastro = false
+
+        } else{
+            CadastrarProduto.style.display="none"
+            booleancadastro = true
+        }
+        
+}
 
 
 

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="css/listprodutos.css">
     <link rel="stylesheet" href="css/vendas.css">
+    <link rel="stylesheet" href="css/atalhos.css">
+    <link rel="stylesheet" href="css/cadastroprodutos.css">
 </head>
 <body>
     <div class="main">
@@ -31,16 +33,20 @@
                                     <th>Estoque</th>
                                 </tr>
                             </thead>
-                            <tbody id="tbody">
-                                
-                            
-                            </tbody>
+                            <tbody id="tbody"></tbody>
                         </table>
                     </ul>
+            </div>
+            <div class="gridAbaixoPDV">
+            <div class="atalhos">
+                <button onClick="BtnCadastrarProduto()">Cadastrar produto</button>
+                <button>Ver vendas</button>
+                <button>Desconto</button>
             </div>
             <div class="total">
                 <h1>Total: R$<span id="valortotal"> 0,00</span></h1>
             </div>
+        </div>
             <div class="finalizar">
                 <form action="">
                 <select id="formadepagamento">
@@ -54,6 +60,7 @@
                  </div>
         </div>
     </div>
+<div class="gridvendas">
     <div class="vendas">
         <table>
             <thead>
@@ -65,13 +72,28 @@
                     <th>Data</th>
                 </tr>
             </thead>
-            <tbody class="tbodyvendas">
-              
-            
-            </tbody>
+            <tbody class="tbodyvendas"></tbody>
         </table>
     </div>
-
+</div>
+<div class="gridcadastro">
+    <div class="Cadastrodeprodutos">
+        <h1>Cadastrar Produto</h1>
+        <form action="">
+            <p><label for="">Nome</label></p>
+            <input id="inputnomeproduto" type="text">
+            <div class="gridcampos">
+            <p><label for="">Valor</label></p>
+            <input id="inputvalorproduto" type="number">
+            <p><label for="">Estoque</label></p>
+            <input id="inputestoqueproduto" type="number">
+            </div>
+            
+            <p><button onClick="BtnCadastrarProduto()" id="botaovoltar">Voltar</button> <button id="buttonProduto" >Cadastrar</button></p>
+            <p id="mensagemproduto"></p>
+     </form>
+    </div>
+</div>
 </body>
 <script src="js/script.js"></script>
 </html>

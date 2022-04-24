@@ -20,7 +20,7 @@
                 <datalist id="datalist">
                    <option></option>
                 </datalist>
-                <input type="submit" value="Adicionar" id="inputsubmit">
+                <input type="submit" value="Adicionar" id="inputsubmit" name="inputsubmit">
             </form>
             <div id="listprodutos">
                     <ul>
@@ -78,22 +78,27 @@
 </div>
 <div class="gridcadastro">
     <div class="Cadastrodeprodutos">
+        <div class="grid1">
         <h1>Cadastrar Produto</h1>
+        </div>
+        <div class="grid2">
         <form action="">
             <p><label for="">Nome</label></p>
-            <input id="inputnomeproduto" autocomplete="off" autocapitalize="off" required type="text">
+            <input id="inputnomeproduto"  autocomplete="off" autocapitalize="off" required type="text">
             <div class="gridcampos">
             <p><label for="">Valor</label></p>
-            <input id="inputvalorproduto" required type="number">
+            <input  autocomplete="off" autocapitalize="off"  id="inputvalorproduto" required type="number">
             <p><label for="">Estoque</label></p>
-            <input id="inputestoqueproduto" required type="number">
+            <input autocomplete="off" autocapitalize="off"  id="inputestoqueproduto" required type="number">
             </div>
             
             <p><button onClick="BtnCadastrarProduto()" id="botaovoltar">Voltar</button> <button id="buttonProduto" >Cadastrar</button></p>
             <p id="mensagemproduto">Cadastrado com sucesso</p>
      </form>
     </div>
+    </div>
 </div>
 </body>
 <script src="js/script.js"></script>
+<script src="js/variaveis.js"></script>
 </html>

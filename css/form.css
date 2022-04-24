@@ -70,3 +70,6 @@ select{
     padding: 0;
     height: 30px;
 }
+#inputsubmit{
+    cursor: pointer;
+}

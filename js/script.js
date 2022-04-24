@@ -1,42 +1,44 @@
 //Dom
+async function importarVariares(url){
 
-const datalist = document.querySelector("#datalist")
-const option = document.querySelector("option")
-const inputproduto = document.querySelector("#inputproduto")
-const tbody = document.querySelector("#tbody")
-const total = document.querySelector("#valortotal")
-const inputsubmit = document.querySelector("#inputsubmit")
-const tbodyvendas = document.querySelector(".tbodyvendas")
+        await import(url)
+
+}
+
+importarVariares('./variaveis.js')
+//eventos
+addEventListener('submit',e=>e.preventDefault())
+
+//variaveis
 const select = document.querySelector("#formadepagamento")
-const CadastrarProduto = document.querySelector(".gridcadastro")
-const inputnomeproduto = document.querySelector("#inputnomeproduto")
-const inputvalorproduto = document.querySelector("#inputvalorproduto")
-const inputestoqueproduto = document.querySelector("#inputestoqueproduto")
-const buttonProduto = document.querySelector("#buttonProduto")
-const mensagemproduto = document.querySelector("#mensagemproduto")
-const gridvendas = document.querySelector(".gridvendas")
 //log
 
 const log = (value) => console.log(value)
 
 //armazenamentos dos produtos
 
+const Produtos = {}
 
 const array = []
 
+
+
+var storageProduto = [localStorage.getItem('produtos')]
+var novoStorage = storageProduto.map(Array)
+console.log(novoStorage)
 
 buttonProduto.addEventListener('click',(e)=>{
    
 //Produtos
 
-    const Produtos = {}
-
-    
+    Produtos.id= Math.floor(Math.random() * 1000)
     Produtos.nome=inputnomeproduto.value
     Produtos.valor= parseInt(inputvalorproduto.value)
     Produtos.estoque=inputestoqueproduto.value
 
  array.push(Produtos)
+ localStorage.setItem('produtos',JSON.stringify(array))
+
 
 log(array)
 
@@ -76,14 +78,17 @@ function juntarValor(value){
 
         valorarray.push(value) 
         var somavalor = valorarray.reduce((accumulator,valor)=>accumulator+valor,0)
+      
         total.innerHTML = somavalor
 }
+var arrayProdutosAdicionados = []
 
 function DataList(){
 
 var mapearnome = array.map(data=>data.nome)
 var mapearvalor = array.map(data=>data.valor)
 var mapearestoque = array.map(data=>data.estoque)
+
 
 
     
@@ -95,49 +100,57 @@ var criaroption = document.createElement("option")
         criaroption.value = mapearnome[i]
 
     }
-    addEventListener('submit',(e)=>{
+    inputsubmit.addEventListener('click',()=>{
         
-        e.preventDefault()
         var pesquisarprodutoexistente = array.find(data=> data.nome === inputproduto.value)
+       
 
         
-        
-
         if(!pesquisarprodutoexistente){
 
            console.log("este produto não existe")
            inputsubmit.style.backgroundColor="red"
         
            inputproduto.addEventListener('click',()=>{
-            inputsubmit.style.backgroundColor="rgb(255, 145, 0)"
-            
-        })
-        }else{
+            inputsubmit.style.backgroundColor="rgb(255, 145, 0)"})
+            return
+        }
        
-        
-        console.log(pesquisarprodutoexistente)
-        
+        var numberRandom = "tratual"//Math.floor(Math.random() * 1000)
+       
+        var saveID = pesquisarprodutoexistente.nome
         var criarList = document.createElement("tr")
-
+        criarList.classList.add(`${numberRandom}`)
         tbody.append(criarList)
+        
+       
+        const saveItem = `<td "class="tddeletar"><button onClick="removerItem()"class="deletar">X</button></td>`+`<td>${pesquisarprodutoexistente.nome}</td>` + `<td class="listestoque">${pesquisarprodutoexistente.estoque}</td>` +`<td>${pesquisarprodutoexistente.valor}</td>`
 
-        criarList.innerHTML = `<td class="tddeletar"><button onClick="removerItem(tbody)"class="deletar">X</button></td>`+`<td>${pesquisarprodutoexistente.nome}</td>` + `<td class="listestoque">${pesquisarprodutoexistente.estoque}</td>` +`<td>${pesquisarprodutoexistente.valor}</td>`
+        arrayProdutosAdicionados.
+        push({pnome: "pesquisarprodutoexistente.nome",pvalor:"pesquisarprodutoexistente.valor"}) 
+
+        criarList.innerHTML = saveItem 
         
         //total.innerHTML = somar
         juntarValor(pesquisarprodutoexistente.valor)
         inputproduto.value = ''
-       }
-    
+
+       
+       
     })
 }
 
 
 //deletar itens
+
+
 function removerItem(value){
 
-    value.innerHTML = ''
-    valorarray = []
-    total.innerHTML = "0,00"
+const tratual = document.querySelector(".tratual")
+tratual.parentNode.removeChild(tratual)
+
+   // valorarray = []
+   // total.innerHTML = "0,00"
  } 
 //lista de vendas
 var c = 1
@@ -145,7 +158,7 @@ var todasasvendas = {}
 var arraytodasvendas = []
 
 function criarMovimento(){
-
+    
    
     Object.defineProperties(todasasvendas,{
         _id:{
@@ -191,7 +204,7 @@ function criarMovimento(){
 //vendas
 function gerarMovimento(){
     c++
-  
+    console.log(arrayProdutosAdicionados)
     var somavalor = valorarray.reduce((accumulator,valor)=>accumulator+valor,0)
     log(somavalor)
     total.innerHTML = somavalor
@@ -221,23 +234,24 @@ function gerarMovimento(){
     
 }
 criarMovimento()
+
 var booleancadastro = true
 function BtnCadastrarProduto(){
 
         if(booleancadastro === true){
 
-           CadastrarProduto.style.display="grid"
+           CadastrarProduto.style.visibility="visible"
             booleancadastro = false
 
         } else{
-            CadastrarProduto.style.display="none"
+            CadastrarProduto.style.visibility="hidden"
             booleancadastro = true
         }
         
 }
 var booleanvendas = true
 function verVendas(){
-
+    
     if(booleanvendas  === true){
 
         gridvendas.style.display="grid"
@@ -248,7 +262,6 @@ function verVendas(){
          booleanvendas = true
      }
 }
-
 
 
 
